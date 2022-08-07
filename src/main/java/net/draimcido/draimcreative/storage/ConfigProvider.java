@@ -20,12 +20,10 @@ public class ConfigProvider {
     public void loadCFG() {
     }
 
-    // Методы set
-    public void setMain(Main main) {
-        this.main = main;
-    }
+    // Методы set и get
+    public void setMain(Main main) { this.main = main; }
+    public Main getMain() { return main; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
+    public String getName() { return name; }
 }
