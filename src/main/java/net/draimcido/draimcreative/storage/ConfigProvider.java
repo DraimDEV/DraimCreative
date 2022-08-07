@@ -20,7 +20,16 @@ public class ConfigProvider {
         setMain(main);
         setName(name);
 
+        loadCFG();
     }
+
+
+    /*
+    МЕТОДЫ
+     */
+
+    // Метод перезапуска конфигурации
+    public void reload() { loadCFG(); }
 
     // Метод сохранения конфига
     public void saveCFG() {
