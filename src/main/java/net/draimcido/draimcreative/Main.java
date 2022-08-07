@@ -2,7 +2,11 @@ package net.draimcido.draimcreative;
 
 import java.util.Map;
 import java.util.Map.Entry;
+
+import net.draimcido.draimcreative.commands.MainCommand;
+import net.draimcido.draimcreative.commands.SwitchCommand;
 import net.draimcido.draimcreative.storage.ConfigProvider;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -44,6 +48,15 @@ public final class Main extends JavaPlugin {
 
             if (cmd == null) { continue; }
 
+        }
+    }
+
+    public CommandExecutor getExecutor(String name) {
+        switch (name) {
+        case "dcreative":
+            return new MainCommand(this);
+        default:
+            return null;
         }
     }
 }
