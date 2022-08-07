@@ -2,6 +2,9 @@ package net.draimcido.draimcreative.storage;
 
 import com.google.common.base.Charsets;
 import net.draimcido.draimcreative.Main;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -10,6 +13,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConfigProvider {
     private Main main;
@@ -27,12 +32,29 @@ public class ConfigProvider {
     Конфигурация
      */
 
-    // TODO: Получение сообщений
-    // TODO: Получение строк в конфиге
-    // TODO: Получение значений в конфиге
-    // TODO: Проверка на включение параметров
-    // TODO: Получение списка строк в конфиге
-    // TODO: Получение списка матерьялов в конфиге
+    // Получение сообщений
+    public String getMSG(String path) { return ChatColor.translateAlternateColorCodes('&', getString(path)); }
+    // Получение строк в конфиге
+    public String getString(String path) { return getCFG().getString(path) == null ? "" : getCFG().getString(path);}
+    // Получение значений в конфиге
+    public int getInt(String path) { return getCFG().getInt(path); }
+    // Проверка на включение параметров
+    public boolean isEnabled(String path) { return getCFG().getBoolean(path); }
+    // Получение списка строк в конфиге
+    public List<String> getStringList(String path) { return getCFG().getStringList(path); }
+    // Получение списка матерьялов в конфиге
+    public List<Material> getMaterialList(String path) {
+        List<Material> list = new ArrayList<>();
+
+        for (String m : getCFG().getStringList(path)) {
+            try {
+                list.add(Material.valueOf(m));
+            } catch (IllegalArgumentException e) {
+                Bukkit.getLogger().info("Пропущен предмет:" + e.getMessage());
+            }
+        }
+        return  list;
+    }
 
 
     /*
