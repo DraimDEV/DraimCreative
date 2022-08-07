@@ -11,4 +11,13 @@ public class ConfigProvider {
     public ConfigProvider(Main main, String name) {
 
     }
+
+    // Методы set
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
