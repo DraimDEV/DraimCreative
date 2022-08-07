@@ -1,7 +1,9 @@
 package net.draimcido.draimcreative;
 
+import java.util.Map;
+import java.util.Map.Entry;
 import net.draimcido.draimcreative.storage.ConfigProvider;
-import org.bukkit.entity.Player;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
@@ -33,4 +35,15 @@ public final class Main extends JavaPlugin {
         this.messages.reload();
     }
 
+    // Регистрация команд плагина
+    private void registerCMDs() {
+        // Рег команд
+        for (Entry<String, Map<String, Object>> entry : getDescription().getCommands().entrySet()) {
+            String name = entry.getKey();
+            PluginCommand cmd = getCommand(name);
+
+            if (cmd == null) { continue; }
+
+        }
+    }
 }
