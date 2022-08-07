@@ -26,4 +26,11 @@ public final class Main extends JavaPlugin {
         this.cfg = new ConfigProvider(this, "config.yml");
         this.messages = new ConfigProvider(this, "messages.yml");
     }
+
+    // Перезапуск конфига и сообщений
+    public void reloadConfigs() {
+        this.cfg.reload();
+        this.messages.reload();
+    }
+
 }
