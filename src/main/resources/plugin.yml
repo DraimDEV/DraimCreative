@@ -1,0 +1,7 @@
+name: DraimCreative
+version: '${version}'
+main: net.draimcido.draimcreative.Main
+api-version: 1.19
+authors: [ DraimGooSe ]
+description: Ограничение креатива для проекта DraimCiDo
+website: https://dev.draimcido.net
