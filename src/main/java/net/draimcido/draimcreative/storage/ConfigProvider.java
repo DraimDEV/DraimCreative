@@ -22,6 +22,16 @@ public class ConfigProvider {
 
     }
 
+    // Метод сохранения конфига
+    public void saveCFG() {
+        try {
+            File f = new File(getMain().getDataFolder(), getName());
+            getCFG().save(f);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     // Метод подгрузки конфига
     public void loadCFG() {
         File f = new File(getMain().getDataFolder(), getName());
@@ -36,15 +46,19 @@ public class ConfigProvider {
 
         try {
             cfg.load(f);
+
             InputStream stream = getMain().getResource(getName());
             InputStreamReader reader = new InputStreamReader(stream, Charsets.UTF_8);
             YamlConfiguration defaults = YamlConfiguration.loadConfiguration(reader);
+
             cfg.options().copyDefaults(true);
             cfg.setDefaults(defaults);
+
             cfg.save(f);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
+        setConfig(cfg);
     }
 
     // Методы set и get
@@ -53,4 +67,7 @@ public class ConfigProvider {
 
     public void setName(String name) { this.name = name; }
     public String getName() { return name; }
+
+    public void setConfig(FileConfiguration cfg) { this.config = cfg; }
+    public FileConfiguration getCFG() { return config; }
 }
