@@ -93,4 +93,7 @@ public final class Main extends JavaPlugin {
      * @return DraimCreative plugin instance
      */
     public static Plugin getInstance() { return Bukkit.getPluginManager().getPlugin("DraimCreative"); }
+
+    public Utils getUtils() { return utils; }
+    public void setUtils(Utils utils) { this.utils = utils; }
 }
