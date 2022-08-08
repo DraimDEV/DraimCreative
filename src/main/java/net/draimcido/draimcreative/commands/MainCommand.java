@@ -32,5 +32,6 @@ public class MainCommand implements CommandExecutor {
     // Метод перезагрузки плагина
     public void reload(CommandSender sender) {
         main.reloadConfigs();
+        main.registerListeners();
     }
 }
