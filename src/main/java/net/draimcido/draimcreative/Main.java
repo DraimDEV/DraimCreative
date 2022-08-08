@@ -41,6 +41,9 @@ public final class Main extends JavaPlugin {
     public void reloadConfigs() {
         this.cfg.reload();
         this.messages.reload();
+
+        // Перезагрузка всех команд по типу, сообщения, альясы и прочее
+        registerCMDs();
     }
 
     // Регистрация ивентов
