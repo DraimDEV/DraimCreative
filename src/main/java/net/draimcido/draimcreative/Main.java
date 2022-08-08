@@ -43,6 +43,11 @@ public final class Main extends JavaPlugin {
         this.messages.reload();
     }
 
+    // Регистрация ивентов
+    public void registerListeners() {
+        // ...
+    }
+
     // Регистрация команд плагина
     private void registerCMDs() {
         // Рег команд
